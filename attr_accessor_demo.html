@@ -1,0 +1,30 @@
+<html>
+
+<head>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="attr_accessor.js"></script>
+	<script type="text/javascript">
+		var myObj = function() {
+			console.debug("Initializing");
+			this._x = 1;
+			this._y = 2;
+		}
+		$(myObj.prototype).attr_accessor('foo');
+		$(myObj.prototype).attr_reader('x');
+		$(myObj.prototype).attr_writer('y');
+
+		var x = new myObj();
+		console.debug('Foo', x.foo());
+		x.foo('bar');
+		console.debug('Foo', x.foo());
+
+		console.debug('X', x.x());
+
+		x.y('test');
+		console.debug(x._y);
+
+		console.debug(x);
+	</script>
+</head>
+
+</html>
